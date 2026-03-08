@@ -150,25 +150,8 @@ export function ContactSection() {
       ref={sectionRef}
       id="contact"
       className="relative min-h-screen py-24 md:py-32 overflow-hidden"
-      style={{ backgroundColor: "#0A0A0A" }}
     >
-      {/* Background grid */}
-      <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.03 }}>
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div
-            key={`vl-${i}`}
-            className="absolute top-0 bottom-0 w-px"
-            style={{ left: `${(i + 1) * (100 / 13)}%`, backgroundColor: "#E8E8E8" }}
-          />
-        ))}
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div
-            key={`hl-${i}`}
-            className="absolute left-0 right-0 h-px"
-            style={{ top: `${(i + 1) * (100 / 9)}%`, backgroundColor: "#E8E8E8" }}
-          />
-        ))}
-      </div>
+
 
       {/* Corner accents */}
       <div className="absolute top-8 left-8 w-6 h-6 pointer-events-none">

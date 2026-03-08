@@ -115,43 +115,26 @@ export function ProjectsSection() {
         once: true,
       })
 
-      const updateScroll = () => {
-        const viewportWidth = window.innerWidth
-        const totalScroll = container.scrollWidth - viewportWidth
-
-        // Kill any existing ScrollTrigger/animation on resize
-        ScrollTrigger.getAll().forEach((st) => {
-          if (st.trigger === section && st.pin === section) {
-            st.kill()
-          }
-        })
-
-        if (totalScroll <= 0) {
-          gsap.set(container, { x: 0 })
-          return
-        }
-
-        gsap.to(container, {
-          x: -totalScroll,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: () => `+=${totalScroll}`,
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-          },
-        })
+      // Dynamically calculate horizontal scroll
+      const getScrollAmount = () => {
+        return container.scrollWidth - window.innerWidth
       }
 
-      updateScroll()
-      const handleResize = () => updateScroll()
-      window.addEventListener("resize", handleResize)
+      const tween = gsap.to(container, {
+        x: () => -getScrollAmount(),
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: () => `+=${getScrollAmount()}`,
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+        },
+      })
 
-      return () => {
-        window.removeEventListener("resize", handleResize)
-      }
+      // Clean up handled by ctx.revert()
     }, sectionRef)
 
     return () => {
@@ -161,16 +144,8 @@ export function ProjectsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="projects" className="relative" style={{ backgroundColor: "#0A0A0A" }}>
-      {/* Background grid */}
-      <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.025 }}>
-        {Array.from({ length: 11 }).map((_, i) => (
-          <div key={`pv-${i}`} className="absolute top-0 bottom-0 w-px" style={{ left: `${(i + 1) * (100 / 12)}%`, backgroundColor: "#E8E8E8" }} />
-        ))}
-        {Array.from({ length: 7 }).map((_, i) => (
-          <div key={`ph-${i}`} className="absolute left-0 right-0 h-px" style={{ top: `${(i + 1) * (100 / 8)}%`, backgroundColor: "#E8E8E8" }} />
-        ))}
-      </div>
+    <section ref={sectionRef} id="projects" className="relative overflow-hidden">
+
       {/* Corner accents */}
       <div className="absolute top-6 left-6 w-8 h-8 pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-px" style={{ backgroundColor: "rgba(0,240,255,0.3)" }} />

@@ -283,15 +283,15 @@ function MastermindCard() {
 
             <div className="w-full flex flex-col items-center gap-3 sm:gap-4 py-4 sm:py-6">
               <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ border: "1px solid rgba(255,255,255,0.1)", backgroundColor: "rgba(255,255,255,0.02)" }}>
-              <span
-                ref={questionRef}
-                className="text-4xl sm:text-5xl md:text-6xl font-sans font-semibold select-none"
-                style={{
-                  color: "#CFCFCF",
-                }}
-              >
-                ?
-              </span>
+                <span
+                  ref={questionRef}
+                  className="text-4xl sm:text-5xl md:text-6xl font-sans font-semibold select-none"
+                  style={{
+                    color: "#CFCFCF",
+                  }}
+                >
+                  ?
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <span
@@ -424,7 +424,7 @@ export function HeroSection() {
   const cornerTRRef = useRef<HTMLDivElement>(null)
   const cornerBLRef = useRef<HTMLDivElement>(null)
   const cornerBRRef = useRef<HTMLDivElement>(null)
-  const gridRef = useRef<HTMLDivElement>(null)
+
   const scrollLineRef = useRef<HTMLDivElement>(null)
   const yearRef = useRef<HTMLSpanElement>(null)
   const coordsRef = useRef<HTMLDivElement>(null)
@@ -445,8 +445,6 @@ export function HeroSection() {
         0
       )
 
-      // Grid fades in
-      tl.fromTo(gridRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 }, 0.1)
 
       // Identity block top-left
       if (identityRef.current) {
@@ -645,28 +643,10 @@ export function HeroSection() {
     <section
       ref={sectionRef}
       className="relative min-h-screen flex flex-col justify-between px-6 md:px-12 lg:px-20 py-8 overflow-hidden"
-      style={{ backgroundColor: "#0A0A0A" }}
     >
       {/* ===== DIGITAL FIREFLIES ===== */}
       <DigitalFireflies />
 
-      {/* ===== FULL-SECTION GRID ===== */}
-      <div ref={gridRef} className="absolute inset-0 pointer-events-none" style={{ opacity: 0 }}>
-        {Array.from({ length: 11 }).map((_, i) => (
-          <div
-            key={`v-${i}`}
-            className="absolute top-0 bottom-0 w-px"
-            style={{ left: `${(i + 1) * (100 / 12)}%`, backgroundColor: "rgba(255,255,255,0.025)" }}
-          />
-        ))}
-        {Array.from({ length: 7 }).map((_, i) => (
-          <div
-            key={`h-${i}`}
-            className="absolute left-0 right-0 h-px"
-            style={{ top: `${(i + 1) * (100 / 8)}%`, backgroundColor: "rgba(255,255,255,0.025)" }}
-          />
-        ))}
-      </div>
 
       {/* ===== CORNER BRACKETS ===== */}
       <div ref={cornerTLRef} className="absolute top-6 left-6 w-12 h-12 pointer-events-none" style={{ opacity: 0 }}>
@@ -895,7 +875,7 @@ export function HeroSection() {
         className="absolute z-20 hidden md:block"
         style={{
           top: "50%",
-          right: "18%",
+          right: "13%",
           transform: "translateY(-50%)",
           opacity: 0,
         }}
