@@ -1,12 +1,13 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
+import { Plus_Jakarta_Sans, JetBrains_Mono, Caveat } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const spaceGrotesk = Space_Grotesk({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-sans',
   display: 'swap',
+  weight: ['300', '400', '500', '600', '700', '800'],
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -15,9 +16,16 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
+const caveat = Caveat({
+  subsets: ['latin'],
+  variable: '--font-signature',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+})
+
 export const metadata: Metadata = {
-  title: 'Developer Portfolio | Frontend Engineer',
-  description: 'Elite frontend developer portfolio — immersive, motion-driven, and built with precision.',
+  title: 'Ankit Thakur — Frontend Engineer',
+  description: 'I build interfaces that feel alive. 5+ years turning complex product problems into interfaces that feel effortless.',
 }
 
 export const viewport: Viewport = {
@@ -32,7 +40,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} ${jetbrainsMono.variable} ${caveat.variable}`}
+    >
       <body className="font-sans antialiased">
         {children}
         <Analytics />

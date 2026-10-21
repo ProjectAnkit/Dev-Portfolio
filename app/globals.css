@@ -4,31 +4,32 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #0A0A0A;
-  --foreground: #E8E8E8;
-  --card: #111111;
-  --card-foreground: #E8E8E8;
-  --popover: #111111;
-  --popover-foreground: #E8E8E8;
-  --primary: #E8E8E8;
-  --primary-foreground: #0A0A0A;
-  --secondary: #1A1A1A;
-  --secondary-foreground: #E8E8E8;
-  --muted: #1A1A1A;
-  --muted-foreground: #666666;
-  --accent: #00F0FF;
-  --accent-foreground: #0A0A0A;
-  --destructive: #FF4444;
-  --destructive-foreground: #E8E8E8;
-  --border: #1F1F1F;
-  --input: #1F1F1F;
-  --ring: #00F0FF;
+  --background: #FAFAF7;
+  --foreground: #16140F;
+  --card: #FFFFFF;
+  --card-foreground: #16140F;
+  --popover: #FFFFFF;
+  --popover-foreground: #16140F;
+  --primary: #16140F;
+  --primary-foreground: #FAFAF7;
+  --secondary: #F0EDE6;
+  --secondary-foreground: #16140F;
+  --muted: #F0EDE6;
+  --muted-foreground: #6E675C;
+  --accent: #0E7490;
+  --accent-foreground: #FAFAF7;
+  --destructive: #DC2626;
+  --destructive-foreground: #FAFAF7;
+  --border: #E4E0D6;
+  --input: #E4E0D6;
+  --ring: #0E7490;
   --radius: 0.5rem;
 }
 
 @theme inline {
-  --font-sans: 'Space Grotesk', 'Geist', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+  --font-sans: var(--font-sans), 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+  --font-signature: var(--font-signature), 'Caveat', cursive;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -93,7 +94,7 @@ main {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.5;
+  opacity: 0.28;
   animation: grain 8s steps(10) infinite;
 }
 
@@ -117,8 +118,8 @@ main {
 
 /* Selection */
 ::selection {
-  background: rgba(0, 240, 255, 0.2);
-  color: #E8E8E8;
+  background: rgba(14, 116, 144, 0.18);
+  color: #16140F;
 }
 
 /* Magnetic button styles */
@@ -156,3 +157,44 @@ main {
 .progress-glow {
   box-shadow: 0 0 8px rgba(0, 240, 255, 0.6), 0 0 20px rgba(0, 240, 255, 0.3);
 }
+
+/* Handwriting signature font */
+.font-signature {
+  font-family: var(--font-signature), 'Caveat', cursive;
+}
+
+/* Editorial hairline rules inspired by jithinrp.com */
+.editorial-grid {
+  border-color: #E4E0D6;
+}
+
+.hairline-b {
+  border-bottom: 1px solid #E4E0D6;
+}
+
+.hairline-t {
+  border-top: 1px solid #E4E0D6;
+}
+
+.hairline-l {
+  border-left: 1px solid #E4E0D6;
+}
+
+.hairline-r {
+  border-right: 1px solid #E4E0D6;
+}
+
+/* Architectural crosshair point */
+.grid-plus {
+  position: absolute;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 13px;
+  line-height: 1;
+  color: #A39B8B;
+  font-weight: 300;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+

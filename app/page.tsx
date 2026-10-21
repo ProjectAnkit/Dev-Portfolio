@@ -2,34 +2,32 @@
 
 import { SmoothScrollProvider } from "@/components/smooth-scroll-provider"
 import { CursorFollower } from "@/components/cursor-follower"
-import { XPSystem } from "@/components/xp-system"
-import { HeroSection } from "@/components/hero-section"
-import { ProjectsSection } from "@/components/projects-section"
-import { SkillsSection } from "@/components/skills-section"
-import { TimelineSection } from "@/components/timeline-section"
-import { ContactSection } from "@/components/contact-section"
-import { CinematicBackground } from "@/components/cinematic-background"
 import { LoadingScreen } from "@/components/loading-screen"
+import { SiteNav } from "@/components/site-nav"
+import { HeroEditorial } from "@/components/hero-editorial"
+import { CapabilitySection } from "@/components/capability-section"
+import { WorksSection } from "@/components/works-section"
+import { ExperienceStrip } from "@/components/experience-strip"
+import { AboutSection } from "@/components/about-section"
+import { TestimonialsSection } from "@/components/testimonials-section"
+import { SiteFooter } from "@/components/site-footer"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] text-[#E8E8E8] selection:bg-cyan-500/30">
+    <main className="min-h-screen text-[#16140F]" style={{ backgroundColor: "#FAFAF7" }}>
       <LoadingScreen />
       <SmoothScrollProvider>
-        <CinematicBackground />
-        
-        {/* Dark overlay to ensure text readability over the complex 3D background */}
-        <div className="fixed inset-0 bg-black/65 z-[5] pointer-events-none" />
-        
         <div className="grain-overlay">
           <CursorFollower />
-          <XPSystem />
           <div className="relative z-10">
-            <HeroSection />
-            <ProjectsSection />
-            <SkillsSection />
-            <TimelineSection />
-            <ContactSection />
+            <SiteNav />
+            <HeroEditorial />
+            <CapabilitySection />
+            <WorksSection />
+            <ExperienceStrip />
+            <AboutSection />
+            <TestimonialsSection />
+            <SiteFooter />
           </div>
         </div>
       </SmoothScrollProvider>

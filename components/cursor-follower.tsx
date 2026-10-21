@@ -72,16 +72,16 @@ export function CursorFollower() {
     <>
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[10000] -translate-x-1/2 -translate-y-1/2 hidden md:block"
         style={{
-          backgroundColor: "#00F0FF",
-          opacity: 0.5,
+          border: "1px solid rgba(22,20,15,0.35)",
+          opacity: 0.6,
         }}
       />
       <div
         ref={cursorDotRef}
         className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full pointer-events-none z-[10001] -translate-x-1/2 -translate-y-1/2 hidden md:block"
-        style={{ backgroundColor: "#E8E8E8" }}
+        style={{ backgroundColor: "#0E7490" }}
       />
     </>
   )
